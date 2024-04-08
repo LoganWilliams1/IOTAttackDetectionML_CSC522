@@ -18,7 +18,7 @@ def get_ctgan(subset_frac=1.0):
         train[column] = le.fit_transform(train[column])
         print(train[column].unique())
 
-    ctgan = CTGAN(epochs=25,verbose=True)
+    ctgan = CTGAN(epochs=25,verbose=True, generator_dim=(16), discriminator_dim=(16), batch_size=400)
     print("Starting to train models...")
     # pdb.set_trace()
     ctgan.fit(train, discrete_columns)
@@ -26,4 +26,4 @@ def get_ctgan(subset_frac=1.0):
 
     fraction = str(subset_frac)
 
-    ctgan.save(fraction + "_subset_ctgan.pkl")
+    ctgan.save(fraction + "_subset_lite_ctgan.pkl")

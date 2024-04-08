@@ -1,6 +1,6 @@
 #!/bin/bash
-#BSUB -n 1
-#BSUB -W 36:00
+#BSUB -n 16
+#BSUB -W 100:00
 #BSUB -J CTGAN
 #BSUB -R "rusage[mem=128]"
 #BSUB -q gpu
@@ -10,5 +10,5 @@
 
 source ~/.bashrc
 conda activate /usr/local/usrapps/csc522s24/lrwilli7/env_synth
-python ../generator_custom/large_run.py
+python ../generator_custom/lite_run.py
 conda deactivate
