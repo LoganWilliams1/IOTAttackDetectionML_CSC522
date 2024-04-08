@@ -1,6 +1,6 @@
 #!/bin/bash
-#BSUB -n 1
-#BSUB -W 36:00
+#BSUB -n 16
+#BSUB -W 100:00
 #BSUB -J CTGAN
 #BSUB -R "rusage[mem=128]"
 #BSUB -q gpu
