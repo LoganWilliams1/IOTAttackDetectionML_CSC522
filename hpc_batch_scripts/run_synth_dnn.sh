@@ -1,5 +1,5 @@
 #!/bin/bash
-#BSUB -n 16
+#BSUB -n 16 
 #BSUB -W 48:00
 #BSUB -J IoT_DNN
 #BSUB -q gpu
