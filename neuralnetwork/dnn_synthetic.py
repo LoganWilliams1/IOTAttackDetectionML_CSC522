@@ -31,7 +31,7 @@ def create_multiclass_classification_model(input_shape, num_classes):
     
 
 
-synthesizer = CTGAN.load(filepath='../generator_custom/medium_synthesizer.pkl')
+synthesizer = CTGAN.load('../generator_custom/medium_synthesizer.pkl')
 synthetic_dataset = synthesizer.sample(24000000)
 
 train, test = util.import_dataset(7,"dnn")
