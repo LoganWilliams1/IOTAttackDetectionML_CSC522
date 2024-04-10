@@ -44,7 +44,7 @@ X_train = synthetic_dataset.drop(util.y_column, axis=1)
 X_test = test.drop(util.y_column, axis=1)
 
 label_encoder = LabelEncoder()
-y_test_encoded = label_encoder.transform(y_test)
+y_test_encoded = label_encoder.fit_transform(y_test)
 
 del test, y_test
 num_classes = len(label_encoder.classes_)
