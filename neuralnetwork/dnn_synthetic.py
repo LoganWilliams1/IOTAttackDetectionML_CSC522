@@ -11,7 +11,7 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Dense, BatchNormalization, Dropout
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping
-from sdv.single_table import CTGANSynthesizer
+from ctgan import CTGAN
 import sys
 sys.path.append( '../util' )
 import util as util
@@ -31,7 +31,7 @@ def create_multiclass_classification_model(input_shape, num_classes):
     
 
 
-synthesizer = CTGANSynthesizer.load(filepath='../generator_custom/medium_synthesizer.pkl')
+synthesizer = CTGAN.load(filepath='../generator_custom/medium_synthesizer.pkl')
 synthetic_dataset = synthesizer.sample(24000000)
 
 train, test = util.import_dataset(7,"dnn")
