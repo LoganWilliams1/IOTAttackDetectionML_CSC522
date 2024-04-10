@@ -11,6 +11,7 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Dense, BatchNormalization, Dropout
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.metrics import Accuracy, F1Score
 from ctgan import CTGAN
 import sys
 sys.path.append( '../util' )
@@ -60,7 +61,8 @@ history = model.fit(x=X_train, y=y_train,
 
 test_loss, test_acc = model.evaluate(X_test, y_test_encoded, verbose=2)
 print(f'Test accuracy: {test_acc}, Test loss: {test_loss}')
-del X_train,X_test,y_train,y_test_encoded
+
+del X_train,X_test,y_train
 
 
 
@@ -81,6 +83,21 @@ plt.savefig('../neuralnetwork/synth_history')
 
 ###Change this name so you don't overrwrite the one we have now
 model.save('../neuralnetwork/synth_dnn_model.keras')
+
+
+y_pred = model.predict(X_test, verbose=2)
+
+metric = Accuracy()
+metric.update_state(y_test_encoded, y_pred)
+print("Prediction accuracy:")
+print(metric.result())
+print()
+
+metric = F1Score(average="macro")
+metric.update_state(y_test_encoded, y_pred)
+print("Prediction F1:")
+print(metric.result())
+
 
 
 
@@ -113,3 +130,7 @@ from tensorflow.keras.utils import plot_model
 
 
 plot_model(loaded_model, to_file='../neuralnetwork/synth_model_plot.png', show_shapes=True, show_layer_names=True)
+
+
+
+
