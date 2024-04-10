@@ -18,7 +18,7 @@ def get_ctgan(subset_frac=1.0):
         train[column] = le.fit_transform(train[column])
         print(train[column].unique())
 
-    ctgan = CTGAN(epochs=25,verbose=True, generator_dim=(16,), discriminator_dim=(16,), batch_size=400)
+    ctgan = CTGAN(epochs=25,verbose=True, generator_dim=(16,), discriminator_dim=(16, ), batch_size=400)
     print("Starting to train models...")
     # pdb.set_trace()
     ctgan.fit(train, discrete_columns)
