@@ -8,6 +8,6 @@
 #BSUB -e dnn_outputs/stderr.%J
 
 source ~/.bashrc
-conda activate /usr/local/usrapps/csc522s24/lrwilli7/env_synth
+conda activate /usr/local/usrapps/csc522s24/lrwilli7/env_synth_2
 python ../neuralnetwork/dnn_synthetic.py
 conda deactivate
