@@ -73,7 +73,7 @@ history = model.fit(x=X_train, y=y_train_encoded,
 test_loss, test_acc = model.evaluate(X_test, y_test_encoded, verbose=2)
 print(f'Test accuracy: {test_acc}, Test loss: {test_loss}')
 
-del X_train,X_test,y_train
+del X_train,y_train
 
 
 
