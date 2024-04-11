@@ -58,7 +58,7 @@ label_encoder = LabelEncoder()
 y_train_encoded = y_train.to_numpy()
 y_test_encoded = label_encoder.fit_transform(y_test)
 
-del test, y_test
+del test
 num_classes = len(label_encoder.classes_)
 print(" Number of classes is:" )
 print(num_classes)
@@ -99,13 +99,13 @@ model.save('../neuralnetwork/synth_dnn_model.keras')
 y_pred = model.predict(X_test, verbose=2)
 
 metric = Accuracy()
-metric.update_state(y_test_encoded, y_pred)
+metric.update_state(y_test, y_pred)
 print("Prediction accuracy:")
 print(metric.result())
 print()
 
 metric = F1Score(average="macro")
-metric.update_state(y_test_encoded, y_pred)
+metric.update_state(y_test, y_pred)
 print("Prediction F1:")
 print(metric.result())
 
