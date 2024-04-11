@@ -42,7 +42,7 @@ del train
 discrete_columns = ['HTTP', 'HTTPS', 'DNS', 'Telnet', 'SMTP', 'SSH', 'IRC', 
                     'TCP', 'UDP', 'DHCP', 'ARP', 'ICMP', 'IPv', 'LLC']
 
-encoders_new = joblib.load('column_encoders.joblib')
+encoders_new = joblib.load('../data_breakdown/column_encoders.joblib')
 for column in discrete_columns:
     if column in encoders_new:
         #####for doing this for the dnn's,do NOT do this for the label column######
