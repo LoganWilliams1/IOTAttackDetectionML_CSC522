@@ -16,6 +16,7 @@ from ctgan import CTGAN
 import sys
 sys.path.append( '../util' )
 import util as util
+import joblib
 
 
 def create_multiclass_classification_model(input_shape, num_classes):
@@ -37,6 +38,15 @@ synthetic_dataset = synthesizer.sample(24000000)
 
 train, test = util.import_dataset(7,"dnn")
 del train
+
+discrete_columns = ['HTTP', 'HTTPS', 'DNS', 'Telnet', 'SMTP', 'SSH', 'IRC', 
+                    'TCP', 'UDP', 'DHCP', 'ARP', 'ICMP', 'IPv', 'LLC']
+
+encoders_new = joblib.load('column_encoders.joblib')
+for column in discrete_columns:
+    if column in encoders_new:
+        #####for doing this for the dnn's,do NOT do this for the label column######
+        synthetic_dataset[column] = encoders_new[column].inverse_transform(synthetic_dataset[column])
 
 y_train = synthetic_dataset[util.y_column]
 y_test = test[util.y_column]
