@@ -17,6 +17,7 @@ import sys
 sys.path.append( '../util' )
 import util as util
 import joblib
+import numpy as np
 
 
 def create_multiclass_classification_model(input_shape, num_classes):
@@ -97,15 +98,16 @@ model.save('../neuralnetwork/synth_dnn_model.keras')
 
 
 y_pred = model.predict(X_test, verbose=2)
+predictions = np.argmax(y_pred, axis=1)
 
 metric = Accuracy()
-metric.update_state(y_test, y_pred)
+metric.update_state(y_test_encoded, predictions)
 print("Prediction accuracy:")
 print(metric.result())
 print()
 
 metric = F1Score(average="macro")
-metric.update_state(y_test, y_pred)
+metric.update_state(y_test_encoded, predictions)
 print("Prediction F1:")
 print(metric.result())
 
