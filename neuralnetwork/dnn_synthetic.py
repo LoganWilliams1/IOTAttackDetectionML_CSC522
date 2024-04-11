@@ -7,6 +7,7 @@ import os
 import gc
 import pandas as pd
 from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.metrics import accuracy_score, f1_score
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Dense, BatchNormalization, Dropout
 from tensorflow.keras.optimizers import Adam
@@ -100,16 +101,12 @@ model.save('../neuralnetwork/synth_dnn_model.keras')
 y_pred = model.predict(X_test, verbose=2)
 predictions = np.argmax(y_pred, axis=1)
 
-metric = Accuracy()
-metric.update_state(y_test_encoded, predictions)
-print("Prediction accuracy:")
-print(metric.result())
+acc = accuracy_score(y_true=y_test_encoded, y_pred=predictions)
+print("Accuracy: ", acc)
 print()
+f1 = f1_score(y_true=y_test_encoded, y_pred=predictions)
+print("F1 Score: ", f1)
 
-metric = F1Score(average="macro")
-metric.update_state(y_test_encoded, predictions)
-print("Prediction F1:")
-print(metric.result())
 
 
 
