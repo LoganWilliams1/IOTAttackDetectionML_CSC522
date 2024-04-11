@@ -55,6 +55,7 @@ X_train = synthetic_dataset.drop(util.y_column, axis=1)
 X_test = test.drop(util.y_column, axis=1)
 
 label_encoder = LabelEncoder()
+y_train_encoded = y_train.to_numpy()
 y_test_encoded = label_encoder.fit_transform(y_test)
 
 del test, y_test
@@ -64,7 +65,7 @@ print(num_classes)
 model = create_multiclass_classification_model(len(util.X_columns),num_classes)
 early_stopping = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
 #https://keras.io/api/models/model_training_apis/
-history = model.fit(x=X_train, y=y_train,
+history = model.fit(x=X_train, y=y_train_encoded,
                     validation_split=0.2, epochs=100, 
                     batch_size=256, callbacks=[early_stopping])
 
