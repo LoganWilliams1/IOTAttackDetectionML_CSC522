@@ -104,7 +104,7 @@ predictions = np.argmax(y_pred, axis=1)
 acc = accuracy_score(y_true=y_test_encoded, y_pred=predictions)
 print("Accuracy: ", acc)
 print()
-f1 = f1_score(y_true=y_test_encoded, y_pred=predictions)
+f1 = f1_score(y_true=y_test_encoded, y_pred=predictions, average="macro")
 print("F1 Score: ", f1)
 
 
