@@ -1,6 +1,6 @@
 #!/bin/bash
-#BSUB -n 1
-#BSUB -W 15:00
+#BSUB -n 32
+#BSUB -W 48:00
 #BSUB -J IoT_regression
 #BSUB -R "rusage[mem=128]"
 #BSUB -o regression_outputs/stdout.%J
