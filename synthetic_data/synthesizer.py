@@ -40,7 +40,7 @@ def get_metadata(train):
 
 def get_synthesizer(stype, name):
     # train/test split, get metadata for train
-    train, test = util.import_dataset()
+    train, test = util.import_dataset(subset_frac=0.5)
     metadata = get_metadata(train)
     synthesizer = None
     filepath = "../synthetic_data/synthesizer_pickles/" + name
