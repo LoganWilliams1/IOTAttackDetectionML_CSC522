@@ -38,7 +38,5 @@ def print_scores(y_pred, y_test):
     print('recall_score: ', recall_score(y_pred, y_test, average='macro'))
     print('precision_score: ', precision_score(y_pred, y_test, average='macro'))
     print('f1_score: ', f1_score(y_pred, y_test, average='macro'))
-    print()
-    print()
-    print()   
+
     
