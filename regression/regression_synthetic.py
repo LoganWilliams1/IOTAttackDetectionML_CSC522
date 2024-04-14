@@ -12,12 +12,12 @@ synthetic_dataset = synthesizer.sample(24000000)
 train, test = util.import_dataset(7, "regression")
 del train
 
-
-train[util.y_column].to_numpy()
-
+synthetic_dataset[util.y_column].to_numpy()
 
 y_pred, y_test = regression.train_test_logistic_regression(synthetic_dataset, test)
 
+print("7 Class Synthetic Data LR Classifier")
+print()
 regression.print_scores(y_pred, y_test)
 
 
