@@ -1,4 +1,5 @@
 from tensorflow.keras.models import load_model
+from tensorflow.keras.models import Model
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score, f1_score
 import sys
