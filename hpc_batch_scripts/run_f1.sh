@@ -1,7 +1,9 @@
 #!/bin/bash
 #BSUB -n 16
-#BSUB -W 15:00
+#BSUB -W 48:00
 #BSUB -J IoT_DNN_f1
+#BSUB -q gpu
+#BSUB -gpu "num=1:mode=shared:mps=no"
 #BSUB -o dnn_outputs/stdout.%J
 #BSUB -e dnn_outputs/stderr.%J
 
