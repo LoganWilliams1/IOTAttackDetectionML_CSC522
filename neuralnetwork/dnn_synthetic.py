@@ -36,7 +36,7 @@ def create_multiclass_classification_model(input_shape, num_classes):
 
 
 synthesizer = CTGAN.load('../generator_custom/medium_synthesizer.pkl')
-synthetic_dataset = synthesizer.sample(24000000)
+synthetic_dataset = synthesizer.sample(38000000)
 
 train, test = util.import_dataset(7,"dnn")
 del train
@@ -89,13 +89,13 @@ plt.title('Model Accuracy for 7 classes')
 plt.ylabel('Accuracy')
 plt.xlabel('Epoch')
 plt.legend(loc='upper left')
-plt.savefig('../neuralnetwork/synth_history')
+plt.savefig('../neuralnetwork/large_synth_history')
 
 
 
 
 ###Change this name so you don't overrwrite the one we have now
-model.save('../neuralnetwork/synth_dnn_model.keras')
+model.save('../neuralnetwork/large_synth_dnn_model.keras')
 
 
 y_pred = model.predict(X_test, verbose=2)
@@ -113,7 +113,7 @@ print("F1 Score: ", f1)
 
 
 from tensorflow.keras.models import load_model
-loaded_model = load_model('../neuralnetwork/synth_dnn_model.keras')
+loaded_model = load_model('../neuralnetwork/large_synth_dnn_model.keras')
 print(loaded_model.summary())
 print(loaded_model.get_config())
 
@@ -139,7 +139,7 @@ from tensorflow.keras.utils import plot_model
 
 
 
-plot_model(loaded_model, to_file='../neuralnetwork/synth_model_plot.png', show_shapes=True, show_layer_names=True)
+plot_model(loaded_model, to_file='../neuralnetwork/large_synth_model_plot.png', show_shapes=True, show_layer_names=True)
 
 
 
