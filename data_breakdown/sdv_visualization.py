@@ -17,50 +17,21 @@ metadata.detect_from_dataframe(df)
 synthesizer = CTGAN.load('../generator_custom/medium_synthesizer.pkl')
 synthetic_data = synthesizer.sample(24000000)
 
-fig = get_column_plot(
-    real_data=df,
-    synthetic_data=synthetic_data,
-    metadata=metadata,
-    column_name='Telnet'
-)
+columns = util.X_columns
+columns.append(util.y_column)
 
-fig.write_image("Telnet.png")
+for column in columns:
+    fig = get_column_plot(
+        real_data=df,
+        synthetic_data=synthetic_data,
+        metadata=metadata,
+        column_name=column  
+    )
 
-fig = get_column_plot(
-    real_data=df,
-    synthetic_data=synthetic_data,
-    metadata=metadata,
-    column_name='IRC'
-)
+    fig.write_image(f"../data_breakdown/column_dists/{column}.png")  
 
-fig.write_image("IRC.png")
 
-fig = get_column_plot(
-    real_data=df,
-    synthetic_data=synthetic_data,
-    metadata=metadata,
-    column_name='Header_Length'
-)
 
-fig.write_image("Header_Length.png")
-
-fig = get_column_plot(
-    real_data=df,
-    synthetic_data=synthetic_data,
-    metadata=metadata,
-    column_name='Drate'
-)
-
-fig.write_image("Drate.png")
-
-fig = get_column_plot(
-    real_data=df,
-    synthetic_data=synthetic_data,
-    metadata=metadata,
-    column_name='syn_flag_number'
-)
-
-fig.write_image("syn_flag_number.png")
 
 
 
